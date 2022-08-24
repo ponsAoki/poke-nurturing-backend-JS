@@ -12,6 +12,15 @@ module.exports = class PostAPI {
                 res.status(404).json({ message: err.message })
             }
         }
+        //特定のユーザーの投稿一覧表示
+    static async fetchYourPosts(req, res) {
+            try {
+                const yourPosts = await Post.find({ 'username': 'aokishogo' });
+                res.status(200).json(yourPosts)
+            } catch (err) {
+                res.status(404).json({ message: err.message })
+            }
+        }
         //投稿1つ取得
     static async fetchPostByID(req, res) {
             const id = req.params.id
