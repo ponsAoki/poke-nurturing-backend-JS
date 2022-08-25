@@ -61,7 +61,7 @@ const searchItem = (req, res) => {
         } else {
             console.log("MongoClient接続成功");
             const db = client.db("ポケモンDB")
-            db.collection("items").find({}, { id: 0, "name.japanese": 1, "name.english": 0, "name.chinese": 0 }).toArray((err, results) => {
+            db.collection("items").find().toArray((err, results) => {
                 if (err) throw error;
                 // console.log(results);
                 res.send(results);
