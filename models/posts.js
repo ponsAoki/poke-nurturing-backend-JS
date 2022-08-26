@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const postSchema = mongoose.Schema({
+    title: String,
     pokemon: [String],
     simId: Number,
     no: Number,
     lv: Number,
-    nn: String,
     image: String,
     sex: Number,
     color: String,
