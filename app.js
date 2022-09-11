@@ -22,7 +22,7 @@ mongoose.connect(process.env.PU_DB_URI, {
         useUnifiedTopology: true,
     })
     .then(() => console.log('Connected to database!'))
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err, "app.jsのMongo接続も失敗"));
 
 //api最初のルーティング
 app.use("/api/", AuthRoute);

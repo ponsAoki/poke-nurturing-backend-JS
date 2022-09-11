@@ -2,6 +2,11 @@ const User = require("../models/users")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
+//test
+const testFunc = (req, res) => {
+    console.log("authのtestFuncです");
+}
+
 //ユーザー登録
 const register = (req, res, next) => {
     bcrypt.hash(req.body.password, 10, (err, hashedPass) => {
@@ -102,5 +107,6 @@ module.exports = {
     register,
     login,
     refreshToken,
-    getUser
+    getUser,
+    testFunc
 }
