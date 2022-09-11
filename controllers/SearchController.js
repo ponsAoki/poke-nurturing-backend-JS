@@ -77,39 +77,33 @@ const searchPokeByNum = (req, res) => {
 const searchTopTenOfPoke = async(req, res) => {
     const topTeers = await axios.get('https://resource.pokemon-home.com/battledata/ranking/10342/0/1662560377/pokemon')
     const topTenArr = topTeers.data.slice(0, 10)
-    console.log(topTenArr);
 
-    // const numSearchFunc = async(poke, num) => {
-    //     const cursor = db.collection("poke_data8").find({ 'no': num }).toArray()
-    //     return await cursor.then((results) => {
-    //         const applicablePoke = results[poke.form]
-    //         poke.name = `${applicablePoke.name} ${applicablePoke.form}`
-    //         return poke.name
-    //     })
-    // }
-    let resArr = []
-    await topTenArr.map(async(poke, i) => {
-        // console.log(i);
-        // console.log(poke);
-        const num = await poke.id;
-        // const pokeName = await numSearchFunc(poke, num)
+    const numSearchFunc = async(poke, num) => {
         const cursor = db.collection("poke_data8").find({ 'no': num }).toArray()
-        await cursor.then((results) => {
+        return await cursor.then((results) => {
             const applicablePoke = results[poke.form]
             poke.name = `${applicablePoke.name} ${applicablePoke.form}`
-            const pokeName = poke.name
-            console.log(num, pokeName);
-            const resObj = {
-                id: num,
-                form: poke.form,
-                name: pokeName
-            }
-            resArr.push(resObj)
-            if (resArr.length === 10) {
-                console.log(resArr);
-                res.send(resArr)
-            }
+            return poke.name
         })
+    }
+
+    let resArr = []
+    await topTenArr.map(async(poke, i) => {
+        const num = await poke.id;
+        poke.index = await i
+        const pokeName = await numSearchFunc(poke, num)
+        const resObj = {
+            index: poke.index,
+            id: num,
+            form: poke.form,
+            name: pokeName
+        }
+        resArr.push(resObj)
+        if (resArr.length === 10) {
+            resArr.sort((a, b) => a.index - b.index)
+            console.log(resArr);
+            res.send(resArr)
+        }
     })
 }
 
