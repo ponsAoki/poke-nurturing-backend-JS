@@ -8,7 +8,7 @@ const PostRoute = require('./routes/routesPost')
 const SearchRoute = require('./routes/routesSearch')
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 //ミドルウェア
 app.use(cors());
