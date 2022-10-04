@@ -6,6 +6,7 @@ const {
 } = require("../services/some-domain-ranking.service");
 const { getTopTenPoke } = require("../services/get-top10Poke.service");
 const { getPokeByNum } = require("../services/get-poke-by-num.service");
+const { getPokeById } = require("../services/get-poke-by-id.service");
 const ObjectId = require("mongodb").ObjectId;
 
 const uri = process.env.CLIENT_URI;
@@ -57,22 +58,7 @@ const searchMove = (req, res) => {
 
 //ObjectIdからポケモン1体取得
 const searchPokeById = async (req, res) => {
-  const id = req.params.id;
-  console.log(id);
-  try {
-    const Data = await Post.findById(id);
-    console.log(Data.pokemon[0]);
-
-    const collection = db.collection("poke_data8");
-    //検索
-    collection.findOne({ _id: ObjectId(Data.pokemon[0]) }, (err, results) => {
-      if (err) throw err;
-      console.log(results);
-      res.send(results);
-    });
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
+  await getPokeById(req, res, db);
 };
 
 //特定の図鑑番号のポケモン全部取得
