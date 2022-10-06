@@ -14,5 +14,5 @@ Express.js, MongoDB
 
 ## 個人的にこれから改良したいこと、追加したい機能
 ・DB接続の回数もっと少なくする.  
-・ポケモンHOMEの集計データが更新されるごとに新しいJSONファイル作成 => DBにinsertできるような処理を実装　(cron-jobあたり使う？)　　　
+・ポケモンHOMEの集計データが更新されるごとに新しいJSONファイル作成 => DBにinsertできるような処理を実装　(cron-jobあたり使う？).  
 ・TypeScript × NestJSにリプレイスしたい
