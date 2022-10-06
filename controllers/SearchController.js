@@ -1,13 +1,10 @@
-const Post = require("../models/posts");
 const { MongoClient, ServerApiVersion } = require("mongodb");
-const { default: axios } = require("axios");
 const {
-  someDomainRanking,
-} = require("../services/some-domain-ranking.service");
+  someDomainRankingOfOnePokemon,
+} = require("../services/some-domain-ranking-of-one-pokemon.service");
 const { getTopTenPoke } = require("../services/get-top10Poke.service");
 const { getPokeByNum } = require("../services/get-poke-by-num.service");
 const { getPokeById } = require("../services/get-poke-by-id.service");
-const ObjectId = require("mongodb").ObjectId;
 
 const uri = process.env.CLIENT_URI;
 //MongoClient接続
@@ -71,8 +68,8 @@ const searchTopTenOfPoke = async (req, res) => {
   await getTopTenPoke(req, res, db);
 };
 
-const someDomainRankingController = async () => {
-  return await someDomainRanking();
+const someDomainRankingController = async (req, res) => {
+  return await someDomainRankingOfOnePokemon(req, res, db);
 };
 
 module.exports = {

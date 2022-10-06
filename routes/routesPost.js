@@ -1,22 +1,22 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const PostAPI = require('../controllers/PostController');
-const multer = require('multer');
+const PostAPI = require("../controllers/PostController");
+const multer = require("multer");
 
-const authenticate = require('../middleware/authenticate')
+const authenticate = require("../middleware/authenticate");
 
 //multer middleware
 let storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, './uploads');
-    },
-    filename: function(req, file, cb) {
-        cb(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
-    },
+  destination: function (req, file, cb) {
+    cb(null, "./uploads");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+  },
 });
 
 let upload = multer({
-    storage: storage,
+  storage: storage,
 }).single("image");
 
 router.get("/test", PostAPI.testFunc);
