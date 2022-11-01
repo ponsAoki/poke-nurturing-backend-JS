@@ -9,14 +9,12 @@ const domainRankDataLogic = async (Arr, tailNum) => {
   //   dataArr.push(res.data);
 
   const data = res.data;
-  // console.log(data);
   for (let i = 1; i < 900; i++) {
     if (data[String(i)]) {
       data[String(i)].no = i;
       Arr.push(data[String(i)]);
     }
   }
-  // console.log(dataArr);
 };
 
 module.exports = { domainRankDataLogic };

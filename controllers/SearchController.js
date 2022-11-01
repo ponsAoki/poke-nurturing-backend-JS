@@ -68,9 +68,15 @@ const searchTopTenOfPoke = async (req, res) => {
   await getTopTenPoke(req, res, db);
 };
 
+//図鑑番号からそのポケモンの技とか持ち物のランキング取得
 const someDomainRankingController = async (req, res) => {
   return await someDomainRankingOfOnePokemon(req, res, db);
 };
+
+//技idから、該当する技データを返す
+// const searchMoveByMoveId = async (req, res) => {
+//   return await getMoveByMoveId(req, res, db);
+// };
 
 module.exports = {
   searchPoke,
@@ -80,4 +86,5 @@ module.exports = {
   searchPokeByNum,
   searchTopTenOfPoke,
   someDomainRankingController,
+  db: db,
 };

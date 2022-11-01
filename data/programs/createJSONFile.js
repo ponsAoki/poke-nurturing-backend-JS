@@ -1,6 +1,7 @@
 const fs = require("fs");
 const { default: axios } = require("axios");
 const { domainRankDataLogic } = require("./serveDomainRankData");
+const { linkDataArrToDB } = require("./linkDataArrToDB");
 (async () => {
   let dataArr = [];
 
@@ -12,7 +13,9 @@ const { domainRankDataLogic } = require("./serveDomainRankData");
   // domainRankDataLogic();
   await forFunc(dataArr);
 
-  console.log(dataArr);
+  // console.log(dataArr);
+
+  await linkDataArrToDB(dataArr);
 
   const createFile = (pathName, data) => {
     const pathIsExist = dupliCheck(pathName);
