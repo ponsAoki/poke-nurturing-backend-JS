@@ -7,7 +7,7 @@ router.get("/move", SearchController.searchMove);
 router.get("/item", SearchController.searchItem);
 router.get("/toppoke", SearchController.searchTopTenOfPoke);
 router.get("/domainRank", SearchController.someDomainRankingController);
-router.get("/moveById", SearchController.searchMoveByMoveId);
+// router.get("/moveById", SearchController.searchMoveByMoveId);
 router.get("/:id", SearchController.searchPokeById);
 router.post("/num", SearchController.searchPokeByNum);
 
