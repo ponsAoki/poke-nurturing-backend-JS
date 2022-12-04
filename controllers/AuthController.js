@@ -2,22 +2,15 @@ const User = require("../models/users");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-//test
-const testFunc = (req, res) => {
-  console.log("authのtestFuncです");
-};
-
 //ユーザー登録
 const register = (req, res, next) => {
   bcrypt.hash(req.body.password, 10, (err, hashedPass) => {
-    if (err) {
+    if (err)
       res.json({
         error: err,
       });
-    }
     let user = new User({
       name: req.body.name,
-      // email: req.body.email,
       password: hashedPass,
     });
     user
@@ -39,7 +32,6 @@ const register = (req, res, next) => {
 const login = async (req, res, next) => {
   const userName = req.body.username;
   const password = req.body.password;
-  console.log(userName);
 
   //userNameが一致するレコードをDBから取得
   const user = await User.findOne({ name: userName });
@@ -50,7 +42,6 @@ const login = async (req, res, next) => {
   //入力されたパスワードとDBのパスワード比較
   const match = await bcrypt.compare(password, user.password);
   if (!match) {
-    console.log("パスワードが違います");
     return res.status(401).json("パスワードが違います");
   }
 
@@ -91,7 +82,6 @@ const refreshToken = (req, res, next) => {
 //トークン検証後に、有効なトークンに基づいてユーザー情報を取得する関数
 const getUser = async (req, res) => {
   const user = await User.findOne({ name: req.user.name });
-  console.log("getUser関数内です");
 
   if (!user) return res.status(404).json("ユーザーが存在しません");
   res.status(200).json(user);

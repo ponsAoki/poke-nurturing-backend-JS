@@ -29,7 +29,6 @@ const getTopTenPoke = async (req, res, db) => {
     resArr.push(resObj);
     if (resArr.length === 10) {
       resArr.sort((a, b) => a.index - b.index);
-      console.log(resArr);
       res.send(resArr);
     }
   });

@@ -21,14 +21,10 @@ const db = client.db("ポケモンDB");
 
 //ポケモンデータ全件取得
 const searchPoke = (req, res) => {
-  debugger;
-  let poke = [];
   db.collection("poke_data8")
     .find()
     .toArray((err, results) => {
       if (err) throw err;
-      // console.log(results);
-      poke = results;
       res.send(results);
     });
 };

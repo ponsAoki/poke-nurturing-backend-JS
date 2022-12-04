@@ -6,13 +6,11 @@ const getPokeById = async (req, res, db) => {
   console.log(id);
   try {
     const Data = await Post.findById(id);
-    console.log(Data.pokemon[0]);
 
     const collection = db.collection("poke_data8");
     //検索
     collection.findOne({ _id: ObjectId(Data.pokemon[0]) }, (err, results) => {
       if (err) throw err;
-      console.log(results);
       res.send(results);
     });
   } catch (error) {

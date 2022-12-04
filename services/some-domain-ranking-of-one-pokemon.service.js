@@ -5,7 +5,6 @@ const someDomainRankingOfOnePokemon = async (req, res, db) => {
   //検索
   collection.find({ no: pokeNum }).toArray((err, results) => {
     if (err) throw err;
-    console.log(results);
     res.send(results);
   });
 };
