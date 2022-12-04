@@ -1,10 +1,10 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const {
   someDomainRankingOfOnePokemon,
-} = require("../services/some-domain-ranking-of-one-pokemon.service");
-const { getTopTenPoke } = require("../services/get-top10Poke.service");
-const { getPokeByNum } = require("../services/get-poke-by-num.service");
-const { getPokeById } = require("../services/get-poke-by-id.service");
+} = require("../services/search/some-domain-ranking-of-one-pokemon.service");
+const { getTopTenPoke } = require("../services/search/get-top10Poke.service");
+const { getPokeByNum } = require("../services/search/get-poke-by-num.service");
+const { getPokeById } = require("../services/search/get-poke-by-id.service");
 
 const uri = process.env.CLIENT_URI;
 //MongoClient接続

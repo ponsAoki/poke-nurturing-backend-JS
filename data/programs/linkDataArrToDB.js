@@ -1,5 +1,5 @@
 const Export = require("../../controllers/SearchController");
-const { getMoveByMoveId } = require("../../services/getMoveByMoveId");
+const { getMoveByMoveId } = require("../../services/search/getMoveByMoveId");
 
 const linkDataArrToDB = async (dataArr) => {
   let resArr = dataArr.map((data) => {

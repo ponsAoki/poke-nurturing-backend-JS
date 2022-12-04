@@ -1,9 +1,8 @@
-const Post = require("../models/posts");
+const Post = require("../../models/posts");
 const ObjectId = require("mongodb").ObjectId;
 
 const getPokeById = async (req, res, db) => {
   const id = req.params.id;
-  console.log(id);
   try {
     const Data = await Post.findById(id);
 

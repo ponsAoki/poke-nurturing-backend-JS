@@ -1,9 +1,7 @@
 const { default: axios } = require("axios");
 
 const getTopTenPoke = async (req, res, db) => {
-  const topTeers = await axios.get(
-    "https://resource.pokemon-home.com/battledata/ranking/10342/0/1662560377/pokemon"
-  );
+  const topTeers = await axios.get(process.env.TOP_10_URI);
   const topTenArr = topTeers.data.slice(0, 10);
 
   const numSearchFunc = async (poke, num) => {
