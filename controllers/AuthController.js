@@ -92,5 +92,4 @@ module.exports = {
   login,
   refreshToken,
   getUser,
-  testFunc,
 };
